@@ -13,14 +13,17 @@ function App() {
     if (newTitle.length == 0 || desc.length == 0) {
       Swal.fire("Please fill the Title or Decription to Add the Data")
     }
-    let newTodo = {
-      title: newTitle,
-      description:desc
+    else {
+      let newTodo = {
+        title: newTitle,
+        description:desc
+      }
+      let updatedTodoarr = [...allTodos]
+      updatedTodoarr.push(newTodo)
+      setAllTodos(updatedTodoarr)
+      sessionStorage.setItem("todos",JSON.stringify(updatedTodoarr))
     }
-    let updatedTodoarr = [...allTodos]
-    updatedTodoarr.push(newTodo)
-    setAllTodos(updatedTodoarr)
-    sessionStorage.setItem("todos",JSON.stringify(updatedTodoarr))
+    
   }
   const handleDel = (index) => {
     let reduced = [...allTodos]
